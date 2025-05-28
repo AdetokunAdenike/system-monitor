@@ -1,0 +1,19 @@
+version: "1.0"
+
+project:
+  name: system-resource-monitor
+  description: Logs system RAM/CPU and sends daily email reports
+
+build:
+  dockerfile: Dockerfile
+
+jobs:
+  - name: send-daily-report
+    command: bash send_report.sh
+    schedule: "0 0 * * *"   # Every day at midnight
+    env:
+      - key: EMAIL
+        value: ""
+    logRetentionDays: 7
+    timeout: 300
+    retry: 1
