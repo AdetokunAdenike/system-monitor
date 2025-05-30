@@ -1,5 +1,3 @@
-Absolutely! You should replace `your-github-username` with your **actual GitHub username** — so if your GitHub is `adetokunadenike`, the line would be:
-
 ```bash
 git clone https://github.com/adetokunadenike/system-monitor.git
 ```
