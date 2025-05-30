@@ -1,11 +1,3 @@
-```bash
-git clone https://github.com/adetokunadenike/system-monitor.git
-```
-
----
-
-### ✅ Here's your polished and complete `README.md`:
-
 ````markdown
 # 🖥️ System Resource Monitor (RAM & CPU Logger)
 
