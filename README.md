@@ -67,7 +67,7 @@ This project is a simple **Bash-based** system resource monitor that tracks **RA
 
 This logs system usage to `system_usage.log` every 5 seconds and triggers an alert if RAM usage exceeds 80%.
 
-### Send Daily Email Manually (for testing)
+### Send Email Manually (for testing)
 
 ```bash
 ./send_report.sh
