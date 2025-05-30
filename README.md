@@ -1,11 +1,9 @@
-````markdown
-# 🖥️ System Resource Monitor (RAM & CPU Logger)
+# System Resource Monitor (RAM & CPU Logger)
 
 This project is a simple **Bash-based** system resource monitor that tracks **RAM and CPU usage** at regular intervals and logs the results to a CSV file. It also supports **real-time alerts** for high RAM usage and can **send daily reports via email** using `msmtp`.
 
----
 
-## 🚀 Features
+🚀 Features
 
 - ✅ Logs RAM and CPU usage every few seconds
 - ✅ Real-time warning when RAM usage exceeds a set threshold
@@ -13,11 +11,9 @@ This project is a simple **Bash-based** system resource monitor that tracks **RA
 - ✅ Logs saved in CSV format for easy analysis
 - ✅ Customizable interval and thresholds
 
----
 
-## 📂 Project Structure
+📂 Project Structure
 
-```bash
 .
 ├── monitor_system.sh       # Main monitoring script
 ├── send_report.sh          # Script to email daily logs
@@ -25,9 +21,7 @@ This project is a simple **Bash-based** system resource monitor that tracks **RA
 ├── .gitignore              # Git ignore rules
 ├── system_usage.log        # CSV log file (auto-generated)
 └── README.md               # Project documentation
-````
 
----
 
 ## ⚙️ Requirements
 
@@ -36,7 +30,6 @@ This project is a simple **Bash-based** system resource monitor that tracks **RA
 * Optional: `notify-send` (for desktop RAM alerts)
 * Linux or WSL (for Windows users)
 
----
 
 ## 🔧 Setup
 
@@ -63,8 +56,6 @@ This project is a simple **Bash-based** system resource monitor that tracks **RA
    ```bash
    chmod +x monitor_system.sh send_report.sh
    ```
-
----
 
 ## ▶️ Usage
 
