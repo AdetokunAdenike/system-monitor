@@ -14,14 +14,14 @@ This project is a simple **Bash-based** system resource monitor that tracks **RA
 
 📂 Project Structure
 
-.
+```
 ├── monitor_system.sh       # Main monitoring script
 ├── send_report.sh          # Script to email daily logs
 ├── .env                    # Environment variables (e.g., recipient email)
 ├── .gitignore              # Git ignore rules
 ├── system_usage.log        # CSV log file (auto-generated)
 └── README.md               # Project documentation
-
+```
 
 ## ⚙️ Requirements
 
