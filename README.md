@@ -179,5 +179,3 @@ This project can be deployed using [PipeOps](https://pipeops.io) for automated d
 ## 📃 License
 
 This project is licensed under the MIT License.
-
-```
