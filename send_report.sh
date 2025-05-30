@@ -1,11 +1,16 @@
 #!/bin/bash
 
 # Load environment variables
-source /mnt/c/Users/PC/DEVELOPMENT/Altschool_Africa/system-monitor/.env
+if [ -f ".env" ]; then
+    source .env
+else
+    echo "❌ .env file not found."
+    exit 1
+fi
 
 SUBJECT="Daily System Usage Report - $(date '+%Y-%m-%d')"
 TO="$EMAIL"
-LOG_FILE="/mnt/c/Users/PC/DEVELOPMENT/Altschool_Africa/system-monitor/system_usage.log"
+LOG_FILE="system_usage.log"
 
 if [ -f "$LOG_FILE" ]; then
     {
@@ -19,10 +24,11 @@ if [ -f "$LOG_FILE" ]; then
         cat "$LOG_FILE"
         echo
         echo "Best regards,"
-        echo "Memory Monitor Script"
+        echo "System Monitor Script"
     } | msmtp "$TO"
-    
-    echo "📧 Email sent to $EMAIL with report."
+
+    echo "📧 Email sent to $TO with report."
 else
     echo "❌ Log file not found: $LOG_FILE"
+    exit 1
 fi
