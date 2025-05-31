@@ -8,16 +8,12 @@ RUN apt-get update && apt-get install -y \
     curl \
     && apt-get clean
 
-# Copy files and set working directory
+# Set working directory and copy files
 WORKDIR /app
 COPY . /app
 
 # Make scripts executable
 RUN chmod +x monitor_system.sh send_report.sh
-
-COPY .msmtprc /root/.msmtprc
-RUN chmod 600 /root/.msmtprc
-
 
 # Run the report script
 CMD ["bash", "send_report.sh"]

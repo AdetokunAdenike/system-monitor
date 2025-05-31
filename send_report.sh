@@ -1,18 +1,15 @@
 #!/bin/bash
 
-# Load environment variables
-if [ -f ".env" ]; then
-    source .env
-else
-    echo "❌ .env file not found."
-    exit 1
-fi
+# Ensure required environment variables are set
+: "${EMAIL:?Missing EMAIL}"
+: "${SENDGRID_API_KEY:?Missing SENDGRID_API_KEY}"
+: "${FROM_EMAIL:?Missing FROM_EMAIL}"
 
 SUBJECT="Daily System Usage Report - $(date '+%Y-%m-%d')"
 TO="$EMAIL"
 LOG_FILE="system_usage.log"
 
-# Check if log file exists
+# Check if log file exists or create a dummy
 if [ -f "$LOG_FILE" ]; then
     BODY=$(cat "$LOG_FILE")
 else
