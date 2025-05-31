@@ -41,6 +41,8 @@ RESPONSE=$(curl --silent --write-out "%{http_code}" --output /dev/null \
 
 if [ "$RESPONSE" -eq 202 ]; then
     echo "📧 Email sent successfully to $TO"
+    exit 0
 else
     echo "❌ Failed to send email. SendGrid API response code: $RESPONSE"
+    exit 1
 fi
