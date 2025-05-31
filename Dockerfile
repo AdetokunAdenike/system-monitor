@@ -4,9 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required tools
 RUN apt-get update && apt-get install -y \
-    msmtp \
     bc \
-    mailutils \
+    curl \
     && apt-get clean
 
 # Copy files and set working directory
