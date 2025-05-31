@@ -16,5 +16,9 @@ COPY . /app
 # Make scripts executable
 RUN chmod +x monitor_system.sh send_report.sh
 
+COPY .msmtprc /root/.msmtprc
+RUN chmod 600 /root/.msmtprc
+
+
 # Run the report script
 CMD ["bash", "send_report.sh"]
