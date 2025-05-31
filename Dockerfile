@@ -24,5 +24,5 @@ RUN chmod 0644 /etc/cron.d/system-report-cron && \
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-# Start cron and keep container running
-CMD cron && tail -f /var/log/cron.log
+CMD ["sh", "-c", "cron && tail -f /var/log/cron.log"]
+
