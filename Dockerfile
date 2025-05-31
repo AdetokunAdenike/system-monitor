@@ -2,27 +2,26 @@ FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies
+# Install tools
 RUN apt-get update && apt-get install -y \
-    bc \
     curl \
     cron \
+    bc \
     && apt-get clean
 
-# Set working directory and copy files
+# Set work directory
 WORKDIR /app
 COPY . /app
 
 # Make scripts executable
-RUN chmod +x monitor_system.sh send_report.sh
+RUN chmod +x send_report.sh monitor_system.sh
 
-# Add cron job
-COPY crontab.txt /etc/cron.d/system-report-cron
-RUN chmod 0644 /etc/cron.d/system-report-cron && \
-    crontab /etc/cron.d/system-report-cron
+# Copy and install crontab
+COPY crontab.txt /etc/cron.d/mycron
+RUN chmod 0644 /etc/cron.d/mycron && crontab /etc/cron.d/mycron
 
-# Create the log file to be able to run tail
+# Create log file
 RUN touch /var/log/cron.log
 
+# Start cron and keep container alive
 CMD ["sh", "-c", "cron && tail -f /var/log/cron.log"]
-
