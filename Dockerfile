@@ -1,27 +1,28 @@
+# Dockerfile
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install tools
+# Install dependencies
 RUN apt-get update && apt-get install -y \
+    bc \
     curl \
     cron \
-    bc \
     && apt-get clean
 
-# Set work directory
+# Set working directory
 WORKDIR /app
+
+# Copy application files
 COPY . /app
 
-# Make scripts executable
-RUN chmod +x send_report.sh monitor_system.sh
+# Make the script executable
+RUN chmod +x monitor_system.sh send_report.sh
 
-# Copy and install crontab
-COPY crontab.txt /etc/cron.d/mycron
-RUN chmod 0644 /etc/cron.d/mycron && crontab /etc/cron.d/mycron
+# Copy crontab file and install it
+COPY crontab.txt /etc/cron.d/app-cron
+RUN chmod 0644 /etc/cron.d/app-cron \
+    && crontab /etc/cron.d/app-cron
 
-# Create log file
-RUN touch /var/log/cron.log
-
-# Start cron and keep container alive
-CMD ["sh", "-c", "cron && tail -f /var/log/cron.log"]
+# Ensure cron runs in the foreground to keep container alive
+CMD cron && tail -f /var/log/syslog
